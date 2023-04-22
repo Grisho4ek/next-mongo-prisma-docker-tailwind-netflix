@@ -1,3 +1,5 @@
+[![Deploy with Vercel](https://vercel.com/button)](<https://vercel.com/new/clone?repository-url=[https://github.com/Grisho4ek/next-mongo-prisma-docker-tailwind-netflix](https://github.com/Grisho4ek/next-mongo-prisma-docker-tailwind-netflix)>)
+
 First, run command for running mongodb in docker container,
 
 ```
