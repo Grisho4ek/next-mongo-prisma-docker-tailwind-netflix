@@ -1,12 +1,20 @@
 import MovieCard from './MovieCard';
 
 interface Props {
-  data: Movie[];
+  movies: Movie[];
   title: string;
+  toggleFavorite: (id: string, f: boolean) => void;
+  favoritesIds: string[];
 }
 
-export default function MoviesGrid({ data, title }: Props) {
-  if (!data.length) return null;
+export default function MoviesGrid({
+  movies,
+  title,
+  favoritesIds,
+  toggleFavorite,
+}: Props) {
+  if (!movies.length) return null;
+
   return (
     <div className='mt-4 space-y-8 px-4 md:px-12'>
       <div>
@@ -14,8 +22,13 @@ export default function MoviesGrid({ data, title }: Props) {
           {title}
         </p>
         <div className='grid grid-cols-4 gap-2'>
-          {data.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              favoritesIds={favoritesIds}
+              toggleFavorite={toggleFavorite}
+            />
           ))}
         </div>
       </div>

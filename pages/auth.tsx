@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
-// import { FaGithub } from 'react-icons/fa';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -100,16 +99,6 @@ export default function Auth() {
                 <span className='me-3'>Continue with google</span>
                 <FcGoogle size={30} />
               </button>
-              {/* <button
-                className='flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white transition hover:opacity-80'
-                onClick={() =>
-                  signIn('github', {
-                    callbackUrl: '/profiles',
-                  })
-                }
-              >
-                <FaGithub size={30} />
-              </button> */}
             </div>
             <p className='mt-12 text-neutral-500'>
               {isLogin

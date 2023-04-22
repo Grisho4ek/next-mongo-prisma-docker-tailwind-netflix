@@ -1,39 +1,22 @@
 import Image from 'next/image';
-import { BsFillPlayFill } from 'react-icons/bs';
-import { AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai';
-import useUser from '@/hooks/useUser';
-import axios from 'axios';
+import { BsFillPlayFill, BsChevronDown } from 'react-icons/bs';
 import Link from 'next/link';
+import useModal from '@/hooks/useModal';
+import ToogleFavoriteBtn from './ToogleFavoriteBtn';
 
 interface Props {
   movie: Movie;
+  toggleFavorite: (id: string, f: boolean) => void;
+  favoritesIds: string[];
 }
 
-export default function MovieCard({ movie }: Props) {
-  // const { openModal } = useInfoModalStore();
-
-  // const redirectToWatch = () => router.push(`/watch/${movie.id}`);
-
-  const { data: user, mutate } = useUser();
-  const isFavorite = user?.favoriteIds.includes(movie.id);
-
-  const toggleFavorites = async () => {
-    if (!user) return;
-    let res;
-
-    if (isFavorite) {
-      res = await axios.delete(`/api/favorites/${movie.id}`);
-    } else {
-      res = await axios.post(`/api/favorites/${movie.id}`);
-    }
-
-    mutate({
-      ...user,
-      favoriteIds: res?.data?.favoriteIds,
-    });
-  };
-
-  const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
+export default function MovieCard({
+  movie,
+  toggleFavorite,
+  favoritesIds,
+}: Props) {
+  const { openModal } = useModal();
+  const isFavorite = favoritesIds.includes(movie?.id || '');
 
   return (
     <div className='group relative h-[12vw] bg-zinc-900'>
@@ -70,17 +53,18 @@ export default function MovieCard({ movie }: Props) {
             >
               <BsFillPlayFill className='w-4 text-black lg:w-6' />
             </Link>
+            <ToogleFavoriteBtn
+              isFavorite={isFavorite}
+              onClick={() => {
+                if (!movie) return;
+                toggleFavorite(movie.id, isFavorite);
+              }}
+            />
             <button
-              onClick={toggleFavorites}
-              className='group/item flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-2 border-white transition hover:border-neutral-300 lg:h-10 lg:w-10'
-            >
-              <Icon className='w-4 text-white group-hover/item:text-neutral-300 lg:w-6' />
-            </button>
-            <button
-              // onClick={() => openModal(data?.id)}
+              onClick={() => openModal(movie)}
               className='group/item ml-auto flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-2 border-white transition hover:border-neutral-300 lg:h-10 lg:w-10'
             >
-              {/* <ChevronDownIcon className='w-4 text-white group-hover/item:text-neutral-300 lg:w-6' /> */}
+              <BsChevronDown className='w-4 text-white group-hover/item:text-neutral-300 lg:w-6' />
             </button>
           </div>
           <p className='mt-4 font-semibold text-green-400'>
