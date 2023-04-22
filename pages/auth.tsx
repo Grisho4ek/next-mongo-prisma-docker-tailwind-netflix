@@ -3,12 +3,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 // import { FaGithub } from 'react-icons/fa';
 
 export default function Auth() {
-  const router = useRouter();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -22,9 +20,8 @@ export default function Auth() {
         email,
         password,
         redirect: false,
-        callbackUrl: '/',
+        callbackUrl: '/profiles',
       });
-      router.push('/');
     } catch (error) {
       console.error(error);
     }
@@ -96,7 +93,7 @@ export default function Auth() {
                 className='flex h-10 cursor-pointer items-center justify-center rounded-full bg-white px-4 transition hover:opacity-80'
                 onClick={() =>
                   signIn('google', {
-                    callbackUrl: '/',
+                    callbackUrl: '/profiles',
                   })
                 }
               >
@@ -107,7 +104,7 @@ export default function Auth() {
                 className='flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white transition hover:opacity-80'
                 onClick={() =>
                   signIn('github', {
-                    callbackUrl: '/',
+                    callbackUrl: '/profiles',
                   })
                 }
               >
