@@ -7,7 +7,7 @@ interface Props {
 }
 
 const AccountMenu = ({ isOpened }: Props) => {
-  const { data: currentUser } = useUser();
+  const { data: user } = useUser();
 
   if (!isOpened) {
     return null;
@@ -21,7 +21,7 @@ const AccountMenu = ({ isOpened }: Props) => {
             <Image fill src='/images/default-blue.png' alt='Profile' />
           </div>
           <p className='text-sm text-white group-hover/item:underline'>
-            {currentUser?.name}
+            {user?.name}
           </p>
         </div>
       </div>
