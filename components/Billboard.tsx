@@ -1,5 +1,6 @@
 import useModal from '@/hooks/useModal';
 import fetcher from '@/libs/fetcher';
+import { Movie } from '@prisma/client';
 import Link from 'next/link';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { BsFillPlayFill } from 'react-icons/bs';

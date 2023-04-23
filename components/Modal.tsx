@@ -4,6 +4,7 @@ import { RxCross1 } from 'react-icons/rx';
 import ToogleFavoriteBtn from './ToogleFavoriteBtn';
 import Link from 'next/link';
 import { BsFillPlayFill } from 'react-icons/bs';
+import { Movie } from '@prisma/client';
 
 interface Props {
   isOpened: boolean;

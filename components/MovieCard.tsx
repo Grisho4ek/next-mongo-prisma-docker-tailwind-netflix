@@ -3,6 +3,7 @@ import { BsFillPlayFill, BsChevronDown } from 'react-icons/bs';
 import Link from 'next/link';
 import useModal from '@/hooks/useModal';
 import ToogleFavoriteBtn from './ToogleFavoriteBtn';
+import { Movie } from '@prisma/client';
 
 interface Props {
   movie: Movie;

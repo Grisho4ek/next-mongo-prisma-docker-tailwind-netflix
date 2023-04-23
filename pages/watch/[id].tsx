@@ -3,6 +3,7 @@ import fetcher from '@/libs/fetcher';
 import useSWR from 'swr';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
+import { Movie } from '@prisma/client';
 
 export default function Watch() {
   const router = useRouter();

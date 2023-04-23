@@ -1,4 +1,5 @@
 import fetcher from '@/libs/fetcher';
+import { User } from '@prisma/client';
 import useSWR from 'swr';
 
 const useUser = () => {

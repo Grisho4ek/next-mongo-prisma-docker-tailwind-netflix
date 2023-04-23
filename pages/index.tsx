@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import useModal from '@/hooks/useModal';
 import useUser from '@/hooks/useUser';
 import fetcher from '@/libs/fetcher';
+import { Movie } from '@prisma/client';
 import axios from 'axios';
 import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react';
